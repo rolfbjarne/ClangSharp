@@ -13,6 +13,10 @@
       "commandName": "Project",
       "commandLineArgs": "@generate.rsp",
       "workingDirectory": "D:\\repos\\terrafx.interop.windows\\generation\\windows\\um\\winioctl"
+    },
+    "Rolf": {
+      "commandName": "Project",
+      "commandLineArgs": "@/Users/rolf/test/clangsharp.rsp",
     }
   }
 }
