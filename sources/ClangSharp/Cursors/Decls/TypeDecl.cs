@@ -10,7 +10,7 @@ public class TypeDecl : NamedDecl
 {
     private readonly ValueLazy<Type> _typeForDecl;
 
-    private protected TypeDecl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind) : base(handle, expectedCursorKind, expectedDeclKind)
+    private protected TypeDecl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind, params CXCursorKind[] additionalExpectedCursorKinds) : base(handle, expectedCursorKind, expectedDeclKind, additionalExpectedCursorKinds)
     {
         if (handle.DeclKind is > CX_DeclKind_LastType or < CX_DeclKind_FirstType)
         {

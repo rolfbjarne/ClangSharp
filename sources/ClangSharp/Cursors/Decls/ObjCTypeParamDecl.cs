@@ -8,7 +8,7 @@ namespace ClangSharp;
 
 public sealed class ObjCTypeParamDecl : TypedefNameDecl
 {
-    internal ObjCTypeParamDecl(CXCursor handle) : base(handle, CXCursor_UnexposedDecl, CX_DeclKind_ObjCTypeParam)
+    internal ObjCTypeParamDecl(CXCursor handle) : base(handle, CXCursor_UnexposedDecl, CX_DeclKind_ObjCTypeParam, CXCursor_TemplateTypeParameter)
     {
     }
 
