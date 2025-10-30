@@ -10,7 +10,7 @@ public class TypedefNameDecl : TypeDecl, IRedeclarable<TypedefNameDecl>
 {
     private readonly ValueLazy<Type> _underlyingType;
 
-    private protected TypedefNameDecl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind) : base(handle, expectedCursorKind, expectedDeclKind)
+    private protected TypedefNameDecl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind, params CXCursorKind[] additionalExpectedCursorKinds) : base(handle, expectedCursorKind, expectedDeclKind, additionalExpectedCursorKinds)
     {
         if (handle.DeclKind is > CX_DeclKind_LastTypedefName or < CX_DeclKind_FirstTypedefName)
         {
