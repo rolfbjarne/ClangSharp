@@ -20,9 +20,9 @@ public unsafe class Cursor : IEquatable<Cursor>
     private readonly ValueLazy<TranslationUnit> _translationUnit;
     private List<Cursor>? _cursorChildren;
 
-    private protected Cursor(CXCursor handle, CXCursorKind expectedCursorKind)
+    private protected Cursor(CXCursor handle, CXCursorKind expectedCursorKind, params CXCursorKind[] additionalExpectedCursorKinds)
     {
-        if (handle.kind != expectedCursorKind)
+        if (handle.kind != expectedCursorKind && (additionalExpectedCursorKinds is null || Array.IndexOf(additionalExpectedCursorKinds, handle.kind) == -1))
         {
             throw new ArgumentOutOfRangeException(nameof(handle));
         }

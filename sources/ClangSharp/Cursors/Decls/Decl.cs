@@ -24,7 +24,7 @@ public class Decl : Cursor
     private readonly ValueLazy<IDeclContext?> _redeclContext;
     private readonly ValueLazy<TranslationUnitDecl> _translationUnitDecl;
 
-    private protected Decl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind) : base(handle, expectedCursorKind)
+    private protected Decl(CXCursor handle, CXCursorKind expectedCursorKind, CX_DeclKind expectedDeclKind, params CXCursorKind[] additionalExpectedCursorKinds) : base(handle, expectedCursorKind, additionalExpectedCursorKinds)
     {
         if ((handle.DeclKind == CX_DeclKind_Invalid) || (handle.DeclKind != expectedDeclKind))
         {
