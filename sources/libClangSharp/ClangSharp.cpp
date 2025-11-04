@@ -1,4 +1,5 @@
 // Copyright (c) .NET Foundation and Contributors. All Rights Reserved. Licensed under the MIT License (MIT). See License.md in the repository root for more information.
+#include <unistd.h>
 
 #include "ClangSharp.h"
 #include "CXCursor.h"
@@ -708,6 +709,31 @@ CX_CharacterKind clangsharp_Cursor_getCharacterLiteralKind(CXCursor C) {
     }
 
     return CX_CLK_Invalid;
+}
+
+char * clangsharp_Cursor_getSelector(CXCursor C) {
+    if (isDeclOrTU(C.kind)) {
+        const Decl* D = getCursorDecl(C);
+
+        if (const ObjCMethodDecl* OCMD = dyn_cast<ObjCMethodDecl>(D)) {
+            Selector selector = OCMD->getSelector();
+            std::string sel = selector.getAsString();
+            if (sel.length() == 0) {
+                fprintf(stderr, "SOMETHING SOMETHING TOO\n");
+                sleep (30);
+                return strdup("???");
+            }
+
+            return strdup(sel.c_str());
+        }
+        fprintf(stderr, "SOMETHING SOMETHING HERE\n");
+        sleep (30);
+    } else {
+        fprintf(stderr, "SOMETHING SOMETHING ELSE HERE\n");
+        sleep (30);
+    }
+
+    return NULL;
 }
 
 CX_StringKind clangsharp_Cursor_getStringLiteralKind(CXCursor C) {

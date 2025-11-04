@@ -1297,6 +1297,19 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly CXCursor RhsExpr => clangsharp.Cursor_getRhsExpr(this);
 
+    public readonly string Selector {
+        get {
+            var ptr = clangsharp.Cursor_getSelector(this);
+            var str = Marshal.PtrToStringAuto(ptr);
+            Marshal.FreeHGlobal(ptr);
+            str ??= "";
+            if (string.IsNullOrEmpty (str)) {
+                Console.WriteLine ($"No selector? Cursor kind: {Kind}, spelling: {Spelling}");
+            }
+            return str;
+        }
+    }
+
     public readonly CXCursor SemanticParent => clang.getCursorSemanticParent(this);
 
     public readonly bool ShouldCopy => clangsharp.Cursor_getShouldCopy(this) != 0;
