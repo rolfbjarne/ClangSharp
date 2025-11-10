@@ -521,6 +521,8 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
         return str;
     }
 
+    public readonly ObjCPropertyAttributeKind PropertyAttributesAsWritten => clangsharp.Cursor_getPropertyAttributesAsWritten(this);
+
     public readonly CXBinaryOperatorKind BinaryOperatorKind => clangsharp.Cursor_getBinaryOpcode(this);
 
     public readonly CXString BinaryOperatorKindSpelling
