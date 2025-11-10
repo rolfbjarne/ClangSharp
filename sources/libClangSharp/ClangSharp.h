@@ -671,6 +671,8 @@ CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getPreviousDecl(CXCursor C);
 
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getPrimaryTemplate(CXCursor C);
 
+CLANGSHARP_LINKAGE clang::ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributesAsWritten(CXCursor C);
+
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getProtocol(CXCursor C, unsigned i);
 
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getRedeclContext(CXCursor C);
