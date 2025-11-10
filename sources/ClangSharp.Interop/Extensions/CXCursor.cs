@@ -27,6 +27,7 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly CX_AttrKind AttrKind => clangsharp.Cursor_getAttrKind(this);
 
+
     public readonly string AttrKindSpelling
     {
         get
@@ -496,6 +497,14 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
     }
 
     public readonly CXAvailabilityKind Availability => clang.getCursorAvailability(this);
+
+    public string? GetAvailabilityAttributeMessage ()
+    {
+        var ptr = clangsharp.clangsharp_Cursor_getAvailabilityAttributeMessage(this);
+        var str = Marshal.PtrToStringAuto(ptr);
+        Marshal.FreeHGlobal(ptr);
+        return str;
+    }
 
     public readonly CXBinaryOperatorKind BinaryOperatorKind => clangsharp.Cursor_getBinaryOpcode(this);
 
