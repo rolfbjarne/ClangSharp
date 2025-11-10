@@ -1334,6 +1334,14 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
         }
     }
 
+    public string? PrettyPrintAttribute ()
+    {
+        var ptr = clangsharp.Cursor_prettyPrintAttribute(this);
+        var str = Marshal.PtrToStringAuto(ptr);
+        Marshal.FreeHGlobal(ptr);
+        return str;
+    }
+
     public readonly CXCursor SemanticParent => clang.getCursorSemanticParent(this);
 
     public readonly bool ShouldCopy => clangsharp.Cursor_getShouldCopy(this) != 0;
