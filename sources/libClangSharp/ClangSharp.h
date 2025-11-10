@@ -251,6 +251,8 @@ CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getAttr(CXCursor C, unsigned i);
 
 CLANGSHARP_LINKAGE CX_AttrKind clangsharp_Cursor_getAttrKind(CXCursor C);
 
+CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributeMessage(CXCursor C);
+
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getBase(CXCursor C, unsigned i);
 
 CLANGSHARP_LINKAGE CXBinaryOperatorKind clangsharp_Cursor_getBinaryOpcode(CXCursor C);

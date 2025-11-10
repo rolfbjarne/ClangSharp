@@ -315,6 +315,24 @@ CX_AttrKind clangsharp_Cursor_getAttrKind(CXCursor C) {
     return CX_AttrKind_Invalid;
 }
 
+CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributeMessage(CXCursor C)
+{
+    if (clang_isAttribute(C.kind)) {
+        const Attr* A = getCursorAttr(C);
+
+        StringRef message;
+        if (const auto *Unavailable = dyn_cast<UnavailableAttr>(A)) {
+            message = Unavailable->getMessage();
+        } else if (const auto *Availability = dyn_cast<AvailabilityAttr>(A)) {
+            message = Availability->getMessage();
+        }
+
+        return strdup (std::string(message).c_str ());
+    }
+
+    return NULL;
+}
+
 CXCursor clangsharp_Cursor_getBase(CXCursor C, unsigned i) {
     if (isDeclOrTU(C.kind)) {
         const Decl* D = getCursorDecl(C);
