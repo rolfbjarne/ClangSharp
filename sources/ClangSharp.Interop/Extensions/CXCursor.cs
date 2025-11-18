@@ -1105,6 +1105,8 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly bool IsPartiallySubstituted => clangsharp.Cursor_getIsPartiallySubstituted(this) != 0;
 
+    public readonly bool IsPOD => clangsharp.Cursor_getIsPOD(this) != 0;
+
     public readonly bool IsPotentiallyEvaluated => clangsharp.Cursor_getIsPotentiallyEvaluated(this) != 0;
 
     public readonly bool IsPreprocessing => clang.isPreprocessing(Kind) != 0;

@@ -2595,6 +2595,18 @@ unsigned clangsharp_Cursor_getIsPartiallySubstituted(CXCursor C) {
     return 0;
 }
 
+unsigned clangsharp_Cursor_getIsPOD(CXCursor C) {
+    if (isDeclOrTU(C.kind)) {
+        const Decl* D = getCursorDecl(C);
+
+        if (const CXXRecordDecl* CRD = dyn_cast<CXXRecordDecl>(D)) {
+            return CRD->isPOD ();
+        }
+    }
+
+    return 0;
+}
+
 unsigned clangsharp_Cursor_getIsPotentiallyEvaluated(CXCursor C) {
     if (isStmtOrExpr(C.kind)) {
         const Stmt* S = getCursorStmt(C);

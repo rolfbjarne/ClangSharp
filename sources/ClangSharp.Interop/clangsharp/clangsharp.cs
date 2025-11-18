@@ -547,6 +547,10 @@ public static partial class @clangsharp
     [return: NativeTypeName("unsigned int")]
     public static extern uint Cursor_getIsPartiallySubstituted(CXCursor C);
 
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getIsPOD", ExactSpelling = true)]
+    [return: NativeTypeName("unsigned int")]
+    public static extern uint Cursor_getIsPOD(CXCursor C);
+
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getIsPotentiallyEvaluated", ExactSpelling = true)]
     [return: NativeTypeName("unsigned int")]
     public static extern uint Cursor_getIsPotentiallyEvaluated(CXCursor C);
