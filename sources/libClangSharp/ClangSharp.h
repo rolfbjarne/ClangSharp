@@ -539,6 +539,8 @@ CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getIsParameterPack(CXCursor C);
 
 CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getIsPartiallySubstituted(CXCursor C);
 
+CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getIsPOD(CXCursor C);
+
 CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getIsPotentiallyEvaluated(CXCursor C);
 
 CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getIsPureVirtual(CXCursor C);
