@@ -285,7 +285,7 @@ __attribute__((availability(ios,introduced=10.0)))
         Assert.That(properties, Is.Empty, "All properties processed");
     }
 
-    private static void AssertNeedNewClangSharp()
+    public static void AssertNeedNewClangSharp()
     {
         var forceRun = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("FORCE_RUN"));
         if (forceRun)
