@@ -239,6 +239,12 @@ public static partial class @clangsharp
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getFloatingLiteralValueAsApproximateDouble", ExactSpelling = true)]
     public static extern double Cursor_getFloatingLiteralValueAsApproximateDouble(CXCursor C);
 
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getFloatingLiteralValueAsDouble", ExactSpelling = true)]
+    public static extern double Cursor_getFloatingLiteralValueAsDouble(CXCursor C);
+
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getFloatingLiteralValueAsFloat", ExactSpelling = true)]
+    public static extern float Cursor_getFloatingLiteralValueAsFloat(CXCursor C);
+
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getFoundDecl", ExactSpelling = true)]
     public static extern CXCursor Cursor_getFoundDecl(CXCursor C);
 
