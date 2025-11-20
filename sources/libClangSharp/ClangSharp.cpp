@@ -333,6 +333,41 @@ CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributeMessage(CXCu
     return NULL;
 }
 
+CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributePlatformIdentifierName(CXCursor C)
+{
+    if (clang_isAttribute(C.kind)) {
+        const Attr* A = getCursorAttr(C);
+
+        StringRef message;
+        /*if (const auto *Unavailable = dyn_cast<UnavailableAttr>(A)) {
+            message = Unavailable->getPlatform()->getName();
+        } else */if (const auto *Availability = dyn_cast<AvailabilityAttr>(A)) {
+            message = Availability->getPlatform()->getName();
+        }
+
+        return strdup (std::string(message).c_str ());
+    }
+
+    return NULL;
+}
+
+CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getAvailabilityAttributeIntroduced(CXCursor C, llvm::VersionTuple* version)
+{
+    if (clang_isAttribute(C.kind)) {
+        const Attr* A = getCursorAttr(C);
+
+        StringRef message;
+        /*if (const auto *Unavailable = dyn_cast<UnavailableAttr>(A)) {
+            message = Unavailable->getPlatform()->getName();
+        } else */if (const auto *Availability = dyn_cast<AvailabilityAttr>(A)) {
+            *version = Availability->getIntroduced();
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 CXCursor clangsharp_Cursor_getBase(CXCursor C, unsigned i) {
     if (isDeclOrTU(C.kind)) {
         const Decl* D = getCursorDecl(C);
@@ -1380,6 +1415,30 @@ double clangsharp_Cursor_getFloatingLiteralValueAsApproximateDouble(CXCursor C) 
 
         if (const FloatingLiteral* FL = dyn_cast<FloatingLiteral>(S)) {
             return FL->getValueAsApproximateDouble();
+        }
+    }
+
+    return 0;
+}
+
+double clangsharp_Cursor_getFloatingLiteralValueAsDouble(CXCursor C) {
+    if (isStmtOrExpr(C.kind)) {
+        const Stmt* S = getCursorStmt(C);
+
+        if (const FloatingLiteral* FL = dyn_cast<FloatingLiteral>(S)) {
+            return FL->getValue ().convertToDouble();
+        }
+    }
+
+    return 0;
+}
+
+double clangsharp_Cursor_getFloatingLiteralValueAsFloat(CXCursor C) {
+    if (isStmtOrExpr(C.kind)) {
+        const Stmt* S = getCursorStmt(C);
+
+        if (const FloatingLiteral* FL = dyn_cast<FloatingLiteral>(S)) {
+            return FL->getValue ().convertToFloat();
         }
     }
 
