@@ -40,5 +40,9 @@ public sealed class FloatingLiteral : Expr
 
     public double ValueAsApproximateDouble => Handle.FloatingLiteralValueAsApproximateDouble;
 
+    public double? ValueAsDouble => Handle.FloatingLiteralValueAsDouble;
+
+    public float? ValueAsFloat => Handle.FloatingLiteralValueAsFloat;
+
     public string ValueString => _valueString.Value;
 }
