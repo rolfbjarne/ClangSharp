@@ -255,7 +255,13 @@ CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributeMessage(CXCu
 
 CLANGSHARP_LINKAGE char * clangsharp_Cursor_getAvailabilityAttributePlatformIdentifierName(CXCursor C);
 
+CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getAvailabilityAttributeDeprecated(CXCursor, llvm::VersionTuple* version);
+
 CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getAvailabilityAttributeIntroduced(CXCursor, llvm::VersionTuple* version);
+
+CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getAvailabilityAttributeObsoleted(CXCursor, llvm::VersionTuple* version);
+
+CLANGSHARP_LINKAGE unsigned clangsharp_Cursor_getAvailabilityAttributeUnavailable(CXCursor);
 
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getBase(CXCursor C, unsigned i);
 

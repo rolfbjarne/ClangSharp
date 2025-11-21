@@ -15,15 +15,15 @@ public struct VersionTuple : IEquatable<VersionTuple>{
     private readonly /* NOPE; NOT READONLY */ uint subminor;
     private readonly /* NOPE; NOT READONLY */ uint build;
 
-    private const int HasFlag = 0;
-    private const int HasShift = 1;
+    private const uint HasFlag = 0x80000000u; // 1 << 31;
+    private const uint ValueMask = uint.MaxValue & ~HasFlag;
 
     public uint Major => major;
 
     public uint? Minor {
         get {
             if (HasMinor) {
-                return minor >> HasShift;
+                return minor & ValueMask;
             }
             return null;
         }
@@ -32,7 +32,7 @@ public struct VersionTuple : IEquatable<VersionTuple>{
     public uint? Subminor {
         get {
             if (HasSubminor) {
-                return subminor >> HasShift;
+                return subminor & ValueMask;
             }
             return null;
         }
@@ -41,38 +41,15 @@ public struct VersionTuple : IEquatable<VersionTuple>{
     public uint? Build {
         get {
             if (HasBuild) {
-                return build >> HasShift;
+                return build & ValueMask;
             }
             return null;
         }
     }
 
-    private uint MinorOrZero {
-        get {
-            if (HasMinor) {
-                return minor >> HasShift;
-            }
-            return 0;
-        }
-    }
-
-    private uint SubminorOrZero {
-        get {
-            if (HasSubminor) {
-                return subminor >> HasShift;
-            }
-            return 0;
-        }
-    }
-
-    private uint BuildOrZero {
-        get {
-            if (HasBuild) {
-                return build >> HasShift;
-            }
-            return 0;
-        }
-    }
+    private uint MinorOrZero => Minor ?? 0;
+    private uint SubminorOrZero => Subminor ?? 0;
+    private uint BuildOrZero => Build ?? 0;
 
     public bool HasMinor => (minor & HasFlag) == HasFlag;
     public bool HasSubminor => (subminor & HasFlag) == HasFlag;

@@ -526,6 +526,32 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
         }
     }
 
+    public VersionTuple? AvailabilityAttributeDeprecated {
+        get {
+            VersionTuple rv = default;
+            unsafe {
+                if (clangsharp.clangsharp_Cursor_getAvailabilityAttributeDeprecated(this, &rv) == 1) {
+                     return rv;
+                }
+             }
+            return null;
+        }
+    }
+
+    public VersionTuple? AvailabilityAttributeObsoleted {
+        get {
+            VersionTuple rv = default;
+            unsafe {
+                if (clangsharp.clangsharp_Cursor_getAvailabilityAttributeObsoleted(this, &rv) == 1) {
+                     return rv;
+                }
+             }
+            return null;
+        }
+    }
+
+    public bool AvailabilityAttributeUnavailable => clangsharp.clangsharp_Cursor_getAvailabilityAttributeUnavailable(this) != 0;
+
     public readonly ObjCPropertyAttributeKind PropertyAttributesAsWritten => clangsharp.Cursor_getPropertyAttributesAsWritten(this);
 
     public readonly CXBinaryOperatorKind BinaryOperatorKind => clangsharp.Cursor_getBinaryOpcode(this);
