@@ -3894,6 +3894,19 @@ CXCursor clangsharp_Cursor_getPrimaryTemplate(CXCursor C) {
     return clang_getNullCursor();
 }
 
+CLANGSHARP_LINKAGE ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributes(CXCursor C)
+{
+    if (isDeclOrTU(C.kind)) {
+        const Decl* D = getCursorDecl(C);
+
+        if (const ObjCPropertyDecl* OCPD = dyn_cast<ObjCPropertyDecl>(D)) {
+            return OCPD->getPropertyAttributes ();
+        }
+    }
+
+    return ObjCPropertyAttribute::Kind::kind_noattr;
+}
+
 CLANGSHARP_LINKAGE ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributesAsWritten(CXCursor C)
 {
     if (isDeclOrTU(C.kind)) {
@@ -5457,6 +5470,13 @@ CXType clangsharp_Type_getInjectedTST(CXType CT) {
     }
 
     return MakeCXType(QualType(), GetTypeTU(CT));
+}
+
+unsigned clangsharp_Type_getIsObjCInstanceType(CXType CT) {
+    QualType T = GetQualType(CT);
+    CXTranslationUnit tu = static_cast<CXTranslationUnit>(CT.data[1]);
+    ASTContext& ctx = getASTUnit(tu)->getASTContext();
+    return ctx.getObjCInstanceType() == T;
 }
 
 unsigned clangsharp_Type_getIsSigned(CXType CT) {

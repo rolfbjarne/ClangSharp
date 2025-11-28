@@ -689,6 +689,8 @@ CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getPreviousDecl(CXCursor C);
 
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getPrimaryTemplate(CXCursor C);
 
+CLANGSHARP_LINKAGE clang::ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributes(CXCursor C);
+
 CLANGSHARP_LINKAGE clang::ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributesAsWritten(CXCursor C);
 
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getProtocol(CXCursor C, unsigned i);
@@ -854,6 +856,8 @@ CLANGSHARP_LINKAGE int clangsharp_Type_getIndex(CXType CT);
 CLANGSHARP_LINKAGE CXType clangsharp_Type_getInjectedSpecializationType(CXType CT);
 
 CLANGSHARP_LINKAGE CXType clangsharp_Type_getInjectedTST(CXType CT);
+
+CLANGSHARP_LINKAGE unsigned clangsharp_Type_getIsObjCInstanceType(CXType CT);
 
 CLANGSHARP_LINKAGE unsigned clangsharp_Type_getIsSigned(CXType CT);
 
