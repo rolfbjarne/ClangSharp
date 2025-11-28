@@ -768,6 +768,9 @@ public static partial class @clangsharp
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getPrimaryTemplate", ExactSpelling = true)]
     public static extern CXCursor Cursor_getPrimaryTemplate(CXCursor C);
 
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getPropertyAttributes", ExactSpelling = true)]
+    public static extern ObjCPropertyAttributeKind Cursor_getPropertyAttributes(CXCursor C);
+
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getPropertyAttributesAsWritten", ExactSpelling = true)]
     public static extern ObjCPropertyAttributeKind Cursor_getPropertyAttributesAsWritten(CXCursor C);
 

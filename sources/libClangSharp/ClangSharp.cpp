@@ -3770,6 +3770,19 @@ CXCursor clangsharp_Cursor_getPrimaryTemplate(CXCursor C) {
     return clang_getNullCursor();
 }
 
+CLANGSHARP_LINKAGE ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributes(CXCursor C)
+{
+    if (isDeclOrTU(C.kind)) {
+        const Decl* D = getCursorDecl(C);
+
+        if (const ObjCPropertyDecl* OCPD = dyn_cast<ObjCPropertyDecl>(D)) {
+            return OCPD->getPropertyAttributes ();
+        }
+    }
+
+    return ObjCPropertyAttribute::Kind::kind_noattr;
+}
+
 CLANGSHARP_LINKAGE ObjCPropertyAttribute::Kind clangsharp_Cursor_getPropertyAttributesAsWritten(CXCursor C)
 {
     if (isDeclOrTU(C.kind)) {
