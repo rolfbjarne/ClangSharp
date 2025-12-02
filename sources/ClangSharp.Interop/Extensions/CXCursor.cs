@@ -1238,6 +1238,8 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly uint MaxAlignment => clangsharp.Cursor_getMaxAlignment(this);
 
+    public readonly ObjCMethodFamily MethodFamily => clangsharp.Cursor_getMethodFamily(this);
+
     public readonly CXModule Module => (CXModule)clang.Cursor_getModule(this);
 
     public readonly CXCursor MostRecentDecl => clangsharp.Cursor_getMostRecentDecl(this);
