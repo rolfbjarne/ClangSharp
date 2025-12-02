@@ -3615,6 +3615,15 @@ int clangsharp_Cursor_getNumProtocols(CXCursor C) {
         if (const ObjCProtocolDecl* OCPD = dyn_cast<ObjCProtocolDecl>(D)) {
             return OCPD->protocol_size();
         }
+
+        if (const ObjCInterfaceDecl* OCID = dyn_cast<ObjCInterfaceDecl>(D)) {
+            unsigned n = 0;
+
+            for (auto protocol : OCID->protocols()) {
+                n++;
+            }
+            return n;
+        }
     }
 
     return -1;
@@ -3953,6 +3962,17 @@ CXCursor clangsharp_Cursor_getProtocol(CXCursor C, unsigned i) {
             unsigned n = 0;
 
             for (auto protocol : OCPD->protocols()) {
+                if (n == i) {
+                    return MakeCXCursor(protocol, getCursorTU(C));
+                }
+                n++;
+            }
+        }
+
+        if (const ObjCInterfaceDecl* OCID = dyn_cast<ObjCInterfaceDecl>(D)) {
+            unsigned n = 0;
+
+            for (auto protocol : OCID->protocols()) {
                 if (n == i) {
                     return MakeCXCursor(protocol, getCursorTU(C));
                 }
