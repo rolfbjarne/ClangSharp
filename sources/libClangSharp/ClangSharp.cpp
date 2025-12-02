@@ -1427,6 +1427,19 @@ CX_ExprDependence clangsharp_Cursor_getExprDependence(CXCursor C) {
     return CX_ED_None;
 }
 
+CLANGSHARP_LINKAGE clang::ObjCMethodFamily clangsharp_Cursor_getMethodFamily(CXCursor C)
+{
+    if (isDeclOrTU(C.kind)) {
+        const Decl* D = getCursorDecl(C);
+
+        if (const ObjCMethodDecl* OCMD = dyn_cast<ObjCMethodDecl>(D)) {
+            return OCMD->getMethodFamily ();
+        }
+    }
+
+    return OMF_None;
+}
+
 int clangsharp_Cursor_getFieldIndex(CXCursor C) {
     if (isDeclOrTU(C.kind)) {
         const Decl* D = getCursorDecl(C);
