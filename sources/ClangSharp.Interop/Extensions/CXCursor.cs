@@ -1310,6 +1310,15 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly CXString ObjCPropertySetterName => clang.Cursor_getObjCPropertySetterName(this);
 
+    public readonly string ObjCRuntimeNameAttrMetadataName {
+        get {
+            var ptr = clangsharp.Cursor_getObjCRuntimeNameAttrMetadataName(this);
+            var str = Marshal.PtrToStringAuto(ptr);
+            Marshal.FreeHGlobal(ptr);
+            return str ?? "";
+        }
+    }
+
     public readonly int ObjCSelectorIndex => clang.Cursor_getObjCSelectorIndex(this);
 
     public readonly long OffsetOfField => clang.Cursor_getOffsetOfField(this);

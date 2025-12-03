@@ -675,6 +675,8 @@ CLANGSHARP_LINKAGE int clangsharp_Cursor_getNumTemplateParameterLists(CXCursor C
 
 CLANGSHARP_LINKAGE int clangsharp_Cursor_getNumVBases(CXCursor C);
 
+CLANGSHARP_LINKAGE char * clangsharp_Cursor_getObjCRuntimeNameAttrMetadataName(CXCursor C);
+
 CLANGSHARP_LINKAGE CXCursor clangsharp_Cursor_getOpaqueValue(CXCursor C);
 
 CLANGSHARP_LINKAGE CXType clangsharp_Cursor_getOriginalType(CXCursor C);
