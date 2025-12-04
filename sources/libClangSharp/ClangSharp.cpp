@@ -5011,8 +5011,13 @@ CXCursor clangsharp_Cursor_getTypeParam(CXCursor C, unsigned i) {
         if (const ObjCInterfaceDecl* OCID = dyn_cast<ObjCInterfaceDecl>(D)) {
             ObjCTypeParamList* typeParamList = OCID->getTypeParamList();
 
+            unsigned int n = 0;
+            for (auto d : *OCID->getTypeParamList())
             if (i < typeParamList->size()) {
-                return MakeCXCursor(&typeParamList->front()[i], getCursorTU(C));
+                if (n == i) {
+                    return MakeCXCursor(d, getCursorTU(C));
+                }
+                n++;
             }
         }
     }
