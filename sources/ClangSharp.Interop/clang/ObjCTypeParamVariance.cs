@@ -7,20 +7,8 @@ using System;
 
 namespace ClangSharp.Interop;
 
-public enum ObjCMethodFamily {
-    None,
-    Alloc,
-    Copy,
-    Init,
-    MutableCopy,
-    New,
-    Autorelease,
-    Dealloc,
-    Finalize,
-    Release,
-    Retain,
-    RetainCount,
-    Self,
-    Initialize,
-    PerformSelector,
+public enum ObjCTypeParamVariance : byte {
+    Invariant,
+    Covariant,
+    Contravariant,
 }
