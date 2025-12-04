@@ -773,6 +773,9 @@ public static partial class @clangsharp
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getNumTemplateParameterLists", ExactSpelling = true)]
     public static extern int Cursor_getNumTemplateParameterLists(CXCursor C);
 
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getNumTypeParams", ExactSpelling = true)]
+    public static extern int Cursor_getNumTypeParams(CXCursor C);
+
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getNumVBases", ExactSpelling = true)]
     public static extern int Cursor_getNumVBases(CXCursor C);
 
@@ -924,6 +927,9 @@ public static partial class @clangsharp
 
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getUsedContext", ExactSpelling = true)]
     public static extern CXCursor Cursor_getUsedContext(CXCursor C);
+
+    [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getTypeParam", ExactSpelling = true)]
+    public static extern CXCursor Cursor_getTypeParam(CXCursor C, [NativeTypeName("unsigned int")] uint i);
 
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getVBase", ExactSpelling = true)]
     public static extern CXCursor Cursor_getVBase(CXCursor C, [NativeTypeName("unsigned int")] uint i);
