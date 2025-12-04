@@ -1959,6 +1959,10 @@ public unsafe partial struct CXCursor : IEquatable<CXCursor>
 
     public readonly CXCursor GetTypeParam(uint index) => clangsharp.Cursor_getTypeParam(this, index);
 
+    public readonly bool TypeParamHasExplicitBound => clang.Cursor_getTypeParamHasExplicitBound(this);
+
+    public readonly ObjCTypeParamVariance TypeParamVariance => clang.Cursor_getTypeParamVariance(this);
+
     public readonly CXCursor GetVBase(uint index) => clangsharp.Cursor_getVBase(this, index);
 
     public override readonly string ToString() => Spelling.ToString();
