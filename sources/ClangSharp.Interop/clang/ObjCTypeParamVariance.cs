@@ -7,6 +7,7 @@ using System;
 
 namespace ClangSharp.Interop;
 
+#pragma warning disable CA1028 // If possible, make the underlying type of ObjCTypeParamVariance System.Int32 instead of byte
 public enum ObjCTypeParamVariance : byte {
     Invariant,
     Covariant,

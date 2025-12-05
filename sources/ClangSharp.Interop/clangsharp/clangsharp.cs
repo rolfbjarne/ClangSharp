@@ -932,7 +932,7 @@ public static partial class @clangsharp
     public static extern CXCursor Cursor_getTypeParam(CXCursor C, [NativeTypeName("unsigned int")] uint i);
 
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getTypeParamHasExplicitBound", ExactSpelling = true)]
-    public static extern ubt Cursor_getTypeParamHasExplicitBound(CXCursor C);
+    public static extern int Cursor_getTypeParamHasExplicitBound(CXCursor C);
 
     [DllImport("libClangSharp", CallingConvention = CallingConvention.Cdecl, EntryPoint = "clangsharp_Cursor_getTypeParamVariance", ExactSpelling = true)]
     public static extern ObjCTypeParamVariance Cursor_getTypeParamVariance(CXCursor C);
