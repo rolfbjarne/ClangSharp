@@ -7,6 +7,7 @@
     <PublishAot>true</PublishAot>
     <RuntimeIdentifiers>linux-arm64;linux-x64;osx-arm64;win-arm64;win-x64</RuntimeIdentifiers>
     <TargetFramework>net10.0</TargetFramework>
+    <NoWarn>$(NoWarn);CA1028</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
@@ -35,9 +36,24 @@
   </PropertyGroup>
 
   <!-- Auto-detect LLVM... more or less -->
+  <PropertyGroup>
+    <LLVMIncludePath>/Users/rolf/Downloads/LLVM-21.1.6-macOS-ARM64/include/</LLVMIncludePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(LLVMIncludePath)' == ''">
     <LLVMIncludePath Condition="'$(OS)' == 'Windows_NT'">C:\Program Files\LLVM\include</LLVMIncludePath>
     <LLVMIncludePath Condition="'$(OS)' != 'Windows_NT'">/usr/lib/llvm-20/include</LLVMIncludePath>
   </PropertyGroup>
+
+  <Target Name="PrepareArguments" BeforeTargets="ComputeRunArguments">
+    <PropertyGroup Condition="'$(Mode)' == 'Help'">
+      <RunArguments>--help</RunArguments>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Mode)' == 'GenerateClang'">
+      <RunArguments>"@$(MSBuildProjectDirectory)/Properties/GenerateClang.rsp" --file-directory "$(LLVMIncludePath)" --include-directory "$(LLVMIncludePath)" --libraryPath "$(LibClangName)"</RunArguments>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Mode)' == 'GenerateClangSharp'">
+      <RunArguments>"@$(MSBuildProjectDirectory)/Properties/GenerateClangSharp.rsp" --file-directory "$(MSBuildProjectDirectory)/.." --include-directory "$(LLVMIncludePath)" --libraryPath "$(LibClangSharpName)"</RunArguments>
+    </PropertyGroup>
+  </Target>
 
 </Project>

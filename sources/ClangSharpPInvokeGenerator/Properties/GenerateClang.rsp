@@ -47,8 +47,12 @@ clang
 --namespace
 ClangSharp.Interop
 --output
-./sources/ClangSharp/Interop
+../../sources/ClangSharp.Interop/clang
 --prefixStrip
 clang_
 --test-output
 ./tests/ClangSharp.UnitTests/InteropTests
+--additional
+-isysroot
+--additional
+/Applications/Xcode_26.1.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk
