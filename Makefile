@@ -20,4 +20,7 @@ rere:
 	git clean -xfd
 	./nuget-pack.sh
 	cd sources/ClangSharpPInvokeGenerator && dotnet run -p:Mode=GenerateClang -bl
+	$(MAKE) generateclangsharp
+
+generateclangsharp:
 	cd sources/ClangSharpPInvokeGenerator && dotnet run -p:Mode=GenerateClangSharp -bl
