@@ -3975,6 +3975,10 @@ public sealed partial class PInvokeGenerator : IDisposable
             {
                 result.typeName = GetTypeName(cursor, context, rootType, usingType.Desugar, ignoreTransparentStructsWhereRequired, isTemplate, out _);
             }
+            else if (type is BlockPointerType)
+            {
+                result.typeName = $"IntPtr /* {result.typeName} */";
+            }
             else
             {
                 AddDiagnostic(DiagnosticLevel.Warning, $"Unsupported type: '{type.TypeClass}'. Falling back '{result.typeName}'.", cursor);
