@@ -5473,6 +5473,13 @@ CXType clangsharp_Type_getInjectedTST(CXType CT) {
     return MakeCXType(QualType(), GetTypeTU(CT));
 }
 
+unsigned clangsharp_Type_getIsObjCInstanceType(CXType CT) {
+    QualType T = GetQualType(CT);
+    CXTranslationUnit tu = static_cast<CXTranslationUnit>(CT.data[1]);
+    ASTContext& ctx = getASTUnit(tu)->getASTContext();
+    return ctx.getObjCInstanceType() == T;
+}
+
 unsigned clangsharp_Type_getIsSigned(CXType CT) {
     QualType T = GetQualType(CT);
     const Type* TP = T.getTypePtrOrNull();
