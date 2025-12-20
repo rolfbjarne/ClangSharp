@@ -405,6 +405,34 @@ __attribute__((availability(maccatalyst,introduced=14.3.0)))
         });
     }
 
+    [Test]
+    public void Type_IsObjCInstanceType()
+    {
+        AssertNeedNewClangSharp();
+
+        var inputContents = $@"
+@interface MyClass
+    -(instancetype) instanceMethod;
+    +(MyClass*) staticMethod;
+@end
+";
+
+        using var translationUnit = CreateTranslationUnit(inputContents, "objective-c++");
+
+        var classes = translationUnit.TranslationUnitDecl.Decls.OfType<ObjCInterfaceDecl>().ToList();
+        Assert.That(classes.Count, Is.GreaterThanOrEqualTo(1), $"At least one class");
+        var myClass = classes.SingleOrDefault(v => v.Name == "MyClass")!;
+        Assert.That(myClass, Is.Not.Null, "MyClass");
+
+        var methodInstanceMethod = myClass.Methods.SingleOrDefault(v => v.Name == "instanceMethod")!;
+        Assert.That(methodInstanceMethod, Is.Not.Null, "methodInstanceMethod");
+        Assert.That(methodInstanceMethod.ReturnType.IsObjCInstanceType, Is.True, "methodInstanceMethod.ReturnType.IsObjCInstanceType");
+
+        var methodStaticMethod = myClass.Methods.SingleOrDefault(v => v.Name == "staticMethod")!;
+        Assert.That(methodStaticMethod, Is.Not.Null, "methodStaticMethod");
+        Assert.That(methodStaticMethod.ReturnType.IsObjCInstanceType, Is.False, "methodStaticMethod.ReturnType.IsObjCInstanceType");
+    }
+
     public static void AssertNeedNewClangSharp()
     {
         var forceRun = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("FORCE_RUN"));
