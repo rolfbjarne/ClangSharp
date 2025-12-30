@@ -34,7 +34,7 @@ clangsharp
 --namespace
 ClangSharp.Interop
 --output
-./sources/ClangSharp/Interop
+../sources/ClangSharp/Interop
 --prefixStrip
 clangsharp_
 --remap
