@@ -220,7 +220,8 @@ public unsafe partial struct CXTranslationUnit(IntPtr handle) : IDisposable, IEq
 
     public readonly Span<CXToken> Tokenize(CXSourceRange sourceRange)
     {
-        CXToken* pTokens; uint numTokens;
+        CXToken* pTokens;
+        uint numTokens;
         clang.tokenize(this, sourceRange, &pTokens, &numTokens);
         return new Span<CXToken>(pTokens, (int)numTokens);
     }

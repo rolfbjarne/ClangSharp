@@ -47,7 +47,8 @@ public unsafe partial struct CXModuleMapDescriptor(IntPtr handle) : IDisposable,
 
     public readonly Span<byte> WriteToBuffer(uint options, out CXErrorCode errorCode)
     {
-        sbyte* pBuffer; uint size;
+        sbyte* pBuffer;
+        uint size;
         errorCode = clang.ModuleMapDescriptor_writeToBuffer(this, options, &pBuffer, &size);
         return new Span<byte>(pBuffer, (int)size);
     }

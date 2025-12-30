@@ -38,8 +38,7 @@ public unsafe partial struct CXUnsavedFile : IDisposable
             pContents[contentsLength] = 0;
         }
 
-        return new CXUnsavedFile()
-        {
+        return new CXUnsavedFile() {
             Filename = pFilename,
             Contents = pContents,
             Length = contentsLength

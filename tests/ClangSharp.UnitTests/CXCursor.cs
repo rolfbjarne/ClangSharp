@@ -19,10 +19,11 @@ public class CXCursorTest : TranslationUnitTest
 
         using var translationUnit = CreateTranslationUnit(inputContents);
 
-        var functionDecls = translationUnit.TranslationUnitDecl.Decls.OfType<FunctionDecl>().ToList ();
-        Assert.That (functionDecls.Count, Is.GreaterThan (0), "Function");
-        foreach (var functionDecl in functionDecls) {
-            Assert.That (functionDecl.Handle.AttrKindSpelling, Is.Not.Null.Or.Empty, "AttrKindSpelling");
+        var functionDecls = translationUnit.TranslationUnitDecl.Decls.OfType<FunctionDecl>().ToList();
+        Assert.That(functionDecls.Count, Is.GreaterThan(0), "Function");
+        foreach (var functionDecl in functionDecls)
+        {
+            Assert.That(functionDecl.Handle.AttrKindSpelling, Is.Not.Null.Or.Empty, "AttrKindSpelling");
         }
     }
 }

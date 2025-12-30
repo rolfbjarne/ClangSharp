@@ -4,10 +4,10 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using static ClangSharp.Interop.CX_AttrKind;
-using static ClangSharp.Interop.CXBinaryOperatorKind;
 using static ClangSharp.Interop.CX_CastKind;
 using static ClangSharp.Interop.CX_DeclKind;
 using static ClangSharp.Interop.CX_StmtClass;
+using static ClangSharp.Interop.CXBinaryOperatorKind;
 using static ClangSharp.Interop.CXUnaryOperatorKind;
 
 namespace ClangSharp.Interop;
