@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": ".NET Core Launch (console)",
+          "type": "coreclr",
+          "request": "launch",
+          "preLaunchTask": "dotnet: build",
+          "program": "/Users/rolf/work/dotnet/ClangSharp/ClangSharp/artifacts/bin/sources/ClangSharpPInvokeGenerator/Debug/net10.0/ClangSharpPInvokeGenerator",
+          "args": [
+            "@Properties/GenerateClangSharp.rsp",
+            "--file-directory", "./../",
+            "--include-directory", "/Applications/Xcode_26.2.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1",
+            "--include-directory", "/Users/rolf/work/dotnet/ClangSharp/ClangSharp/sources/ClangSharpPInvokeGenerator/../../../artifacts/llvm/install/include",
+            "--include-directory", "/Users/rolf/work/dotnet/ClangSharp/ClangSharp/sources/ClangSharpPInvokeGenerator/../../../artifacts/llvm/install/lib/clang/21/include",
+            "--include-directory", "/Applications/Xcode_26.2.0.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
+            "--include-directory", "/Users/rolf/work/dotnet/ClangSharp/artifacts/clangsharp/install/include/",
+            "--libraryPath", "libClangSharp",
+          ],
+          "cwd": "${workspaceFolder}",
+          "stopAtEntry": false,
+          "console": "internalConsole"
+        }
+
+    ]
+}
