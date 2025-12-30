@@ -28,14 +28,14 @@
 
 #include "ClangSharp_export.h"
 
-enum CX_AtomicOperatorKind {
+enum CX_AtomicOperatorKind : int {
     CX_AO_Invalid,
 #define BUILTIN(ID, TYPE, ATTRS)
 #define ATOMIC_BUILTIN(ID, TYPE, ATTRS) CX_AO##ID,
 #include <clang/Basic/Builtins.inc>
 };
 
-enum CX_AttrKind {
+enum CX_AttrKind : int {
     CX_AttrKind_Invalid,
 #define ATTR(X) CX_AttrKind_##X,
 #define ATTR_RANGE(CLASS, FIRST_NAME, LAST_NAME) CX_AttrKind_First##CLASS = CX_AttrKind_##FIRST_NAME, CX_AttrKind_Last##CLASS = CX_AttrKind_##LAST_NAME,
@@ -43,20 +43,20 @@ enum CX_AttrKind {
 };
 
 
-enum CX_CapturedRegionKind {
+enum CX_CapturedRegionKind : int {
     CX_CR_Invalid,
     CX_CR_Default = clang::CR_Default + 1,
     CX_CR_ObjCAtFinally = clang::CR_ObjCAtFinally + 1,
     CX_CR_OpenMP = clang::CR_OpenMP + 1,
 };
 
-enum CX_CastKind {
+enum CX_CastKind : int {
     CX_CK_Invalid,
 #define CAST_OPERATION(Name) CX_CK_##Name,
 #include <clang/AST/OperationKinds.def>
 };
 
-enum CX_CharacterKind {
+enum CX_CharacterKind : int {
     CX_CLK_Invalid,
     CX_CLK_Ascii = static_cast<int>(clang::CharacterLiteralKind::Ascii) + 1,
     CX_CLK_Wide = static_cast<int>(clang::CharacterLiteralKind::Wide) + 1,
@@ -65,7 +65,7 @@ enum CX_CharacterKind {
     CX_CLK_UTF32 = static_cast<int>(clang::CharacterLiteralKind::UTF32) + 1,
 };
 
-enum CX_ConstructionKind {
+enum CX_ConstructionKind : int {
     _CX_CK_Invalid,
     CX_CK_Complete = static_cast<int>(clang::CXXConstructionKind::Complete) + 1,
     CX_CK_NonVirtualBase = static_cast<int>(clang::CXXConstructionKind::NonVirtualBase) + 1,
@@ -73,7 +73,7 @@ enum CX_ConstructionKind {
     CX_CK_Delegating = static_cast<int>(clang::CXXConstructionKind::Delegating) + 1
 };
 
-enum CX_DeclKind {
+enum CX_DeclKind : int {
     CX_DeclKind_Invalid,
 #define DECL(DERIVED, BASE) CX_DeclKind_##DERIVED,
 #define DECL_RANGE(BASE, START, END) CX_DeclKind_First##BASE = CX_DeclKind_##START, CX_DeclKind_Last##BASE = CX_DeclKind_##END,
@@ -82,7 +82,7 @@ enum CX_DeclKind {
 #include <clang/AST/DeclNodes.inc>
 };
 
-enum CX_ExprDependence {
+enum CX_ExprDependence : int {
     CX_ED_None = clang::ExprDependenceScope::None,
     CX_ED_UnexpandedPack = clang::ExprDependenceScope::UnexpandedPack,
     CX_ED_Instantiation = clang::ExprDependenceScope::Instantiation,
@@ -98,7 +98,7 @@ enum CX_ExprDependence {
     CX_ED_ErrorDependent = clang::ExprDependenceScope::ErrorDependent,
 };
 
-enum CX_FloatingSemantics {
+enum CX_FloatingSemantics : int {
     CX_FLK_Invalid,
     CX_FLK_IEEEhalf = llvm::APFloatBase::S_IEEEhalf + 1,
     CX_FLK_BFloat = llvm::APFloatBase::S_BFloat + 1,
@@ -123,14 +123,14 @@ enum CX_FloatingSemantics {
     CX_FLK_MaxSemantics = llvm::APFloatBase::S_MaxSemantics + 1,
 };
 
-enum CX_OverloadedOperatorKind {
+enum CX_OverloadedOperatorKind : int {
     CX_OO_Invalid = clang::OO_None,
 #define OVERLOADED_OPERATOR(Name,Spelling,Token,Unary,Binary,MemberOnly) \
     CX_OO_##Name = clang::OO_##Name,
 #include "clang/Basic/OperatorKinds.def"
 };
 
-enum CX_StmtClass {
+enum CX_StmtClass : int {
     CX_StmtClass_Invalid = clang::Stmt::NoStmtClass,
 #define STMT(CLASS, PARENT) CX_StmtClass_##CLASS,
 #define STMT_RANGE(BASE, FIRST, LAST) CX_StmtClass_First##BASE = CX_StmtClass_##FIRST, CX_StmtClass_Last##BASE = CX_StmtClass_##LAST,
@@ -139,7 +139,7 @@ enum CX_StmtClass {
 #include <clang/AST/StmtNodes.inc>
 };
 
-enum CX_StringKind {
+enum CX_StringKind : int {
     CX_SLK_Invalid,
     CX_SLK_Ordinary = static_cast<int>(clang::StringLiteralKind::Ordinary) + 1,
     CX_SLK_Wide = static_cast<int>(clang::StringLiteralKind::Wide) + 1,
@@ -149,7 +149,7 @@ enum CX_StringKind {
     CX_SLK_Unevaluated = static_cast<int>(clang::StringLiteralKind::Unevaluated) + 1,
 };
 
-enum CX_TemplateArgumentDependence {
+enum CX_TemplateArgumentDependence : int {
     CX_TAD_None = clang::TemplateArgumentDependenceScope::None,
     CX_TAD_UnexpandedPack = clang::TemplateArgumentDependenceScope::UnexpandedPack,
     CX_TAD_Instantiation = clang::TemplateArgumentDependenceScope::Instantiation,
@@ -159,7 +159,7 @@ enum CX_TemplateArgumentDependence {
     CX_TAD_All = clang::TemplateArgumentDependenceScope::All
 };
 
-enum CX_TemplateNameKind {
+enum CX_TemplateNameKind : int {
     CX_TNK_Invalid,
     CX_TNK_Template = clang::TemplateName::Template + 1,
     CX_TNK_OverloadedTemplate = clang::TemplateName::OverloadedTemplate + 1,
@@ -172,7 +172,7 @@ enum CX_TemplateNameKind {
     CX_TNK_DeducedTemplate = clang::TemplateName::DeducedTemplate + 1,
 };
 
-enum CX_TemplateSpecializationKind {
+enum CX_TemplateSpecializationKind : int {
     CX_TSK_Invalid,
     CX_TSK_Undeclared = clang::TSK_Undeclared + 1,
     CX_TSK_ImplicitInstantiation = clang::TSK_ImplicitInstantiation + 1,
@@ -181,7 +181,7 @@ enum CX_TemplateSpecializationKind {
     CX_TSK_ExplicitInstantiationDefinition = clang::TSK_ExplicitInstantiationDefinition + 1,
 };
 
-enum CX_TypeClass {
+enum CX_TypeClass : int {
     CX_TypeClass_Invalid,
 #define TYPE(Class, Base) CX_TypeClass_##Class,
 #define LAST_TYPE(Class) CX_TypeClass_TypeLast = CX_TypeClass_##Class,
@@ -190,7 +190,7 @@ enum CX_TypeClass {
     CX_TypeClass_TagFirst = CX_TypeClass_Record, CX_TypeClass_TagLast = CX_TypeClass_Enum
 };
 
-enum CX_UnaryExprOrTypeTrait {
+enum CX_UnaryExprOrTypeTrait : int {
     CX_UETT_Invalid,
  #define UNARY_EXPR_OR_TYPE_TRAIT(Spelling, Name, Key) CX_UETT_##Name,
  #define CXX11_UNARY_EXPR_OR_TYPE_TRAIT(Spelling, Name, Key) CX_UETT_##Name,
@@ -201,7 +201,7 @@ enum CX_UnaryExprOrTypeTrait {
  #include "clang/Basic/TokenKinds.def"
 };
 
-enum CX_VariableCaptureKind {
+enum CX_VariableCaptureKind : int {
     CX_VCK_Invalid,
     CX_VCK_This = clang::CapturedStmt::VCK_This + 1,
     CX_VCK_ByRef = clang::CapturedStmt::VCK_ByRef + 1,
@@ -209,7 +209,7 @@ enum CX_VariableCaptureKind {
     CX_VCK_VLAType = clang::CapturedStmt::VCK_VLAType + 1
 };
 
-enum CX_DestructorType {
+enum CX_DestructorType : int {
     Deleting = clang::Dtor_Deleting,
     Complete = clang::Dtor_Complete,
     Base = clang::Dtor_Base,
