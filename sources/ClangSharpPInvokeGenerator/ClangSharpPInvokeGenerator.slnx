@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ClangSharpPInvokeGenerator.csproj" />
+  <Project Path="../ClangSharp.PInvokeGenerator/ClangSharp.PInvokeGenerator.csproj" />
+</Solution>
