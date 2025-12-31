@@ -718,6 +718,35 @@ __attribute__((objc_runtime_name("MyRenamedProtocol")))
         Assert.That(myBoundedClassTypeParams[0].Variance, Is.EqualTo(ObjCTypeParamVariance.Invariant), "myBoundedClassTypeParams[0].Variance");
     }
 
+    [Test]
+    public void PointerTypes()
+    {
+        var inputContents = $$"""
+@interface MyClass
+-(void)instanceMethod:(MyClass **)ptrToPtrToMyClass;
+@end
+""";
+        using var translationUnit = CreateTranslationUnit(inputContents, "objective-c++");
+
+        var classes = translationUnit.TranslationUnitDecl.Decls.OfType<ObjCInterfaceDecl>().ToList();
+
+        var myClass = classes.SingleOrDefault(v => v.Name == "MyClass")!;
+        Assert.That(myClass, Is.Not.Null, "MyClass");
+
+        var instanceMethod = myClass.Methods.SingleOrDefault(v => v.Name == "instanceMethod:")!;
+        Assert.That(instanceMethod, Is.Not.Null, "instanceMethod");
+        var parameters = instanceMethod.Parameters.ToList();
+        Assert.That(parameters.Count, Is.EqualTo(1), "parameters.Count");
+        var parameter = parameters[0];
+        Assert.That(parameter.Name, Is.EqualTo("ptrToPtrToMyClass"), "parameter.Name");
+        var parameterType = parameter.Type;
+        Assert.That(parameterType.Kind, Is.EqualTo(CXTypeKind.CXType_Pointer), "parameterType.Kind");
+        var pointeeType = parameterType.PointeeType;
+        Assert.That(pointeeType.Kind, Is.EqualTo(CXTypeKind.CXType_ObjCObjectPointer), "pointeeType.Kind");
+        var pointee2Type = pointeeType.PointeeType;
+        Assert.That(pointee2Type.Kind, Is.EqualTo(CXTypeKind.CXType_ObjCInterface), "pointee2Type.Kind");
+    }
+
     public static void AssertNeedNewClangSharp()
     {
         var forceRun = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("FORCE_RUN"));
