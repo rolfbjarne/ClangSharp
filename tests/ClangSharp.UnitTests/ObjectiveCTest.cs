@@ -733,7 +733,7 @@ __attribute__((objc_runtime_name("MyRenamedProtocol")))
         var myClass = classes.SingleOrDefault(v => v.Name == "MyClass")!;
         Assert.That(myClass, Is.Not.Null, "MyClass");
 
-        var instanceMethod = myClass.Methods.SingleOrDefault(v => v.Selector == "instanceMethod:")!;
+        var instanceMethod = myClass.Methods.SingleOrDefault(v => v.Name == "instanceMethod:")!;
         Assert.That(instanceMethod, Is.Not.Null, "instanceMethod");
         var parameters = instanceMethod.Parameters.ToList();
         Assert.That(parameters.Count, Is.EqualTo(1), "parameters.Count");
@@ -773,7 +773,7 @@ __attribute__((objc_runtime_name("MyRenamedProtocol")))
 
         foreach (var i in info)
         {
-            var instanceMethod = myClass.Methods.SingleOrDefault(v => v.Selector == i.Name)!;
+            var instanceMethod = myClass.Methods.SingleOrDefault(v => v.Name == i.Name)!;
             Assert.That(instanceMethod, Is.Not.Null, "instanceMethod");
             var returnType = instanceMethod.ReturnType;
             Assert.That(returnType.Kind, Is.EqualTo(CXTypeKind.CXType_BlockPointer), "returnType.Kind");
