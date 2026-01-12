@@ -12,15 +12,13 @@ internal sealed class LazyList<[DynamicallyAccessedMembers(DynamicallyAccessedMe
 {
     internal readonly T[] _items;
     internal readonly Func<int, T> _valueFactory;
-    internal readonly Action<T[]>? _allValuesFactory;
 
     public static readonly LazyList<T> Empty = new LazyList<T>(0, _ => null!);
 
-    public LazyList(int count, Func<int, T> valueFactory, Action<T[]>? allValuesFactory = null)
+    public LazyList(int count, Func<int, T> valueFactory)
     {
         _items = (count <= 0) ? [] : new T[count];
         _valueFactory = valueFactory;
-        _allValuesFactory = allValuesFactory;
     }
 
     public T this[int index]
@@ -32,16 +30,8 @@ internal sealed class LazyList<[DynamicallyAccessedMembers(DynamicallyAccessedMe
 
             if (item is null)
             {
-                if (_allValuesFactory is not null)
-                {
-                    _allValuesFactory(_items);
-                    item = _items[index];
-                }
-                else
-                {
-                    item = _valueFactory(index);
-                    items[index] = item;
-                }
+                item = _valueFactory(index);
+                items[index] = item;
             }
 
             return item;
@@ -66,7 +56,14 @@ internal sealed class LazyList<[DynamicallyAccessedMembers(DynamicallyAccessedMe
 
         for (var i = 0; i < items.Length; i++)
         {
-            var currentItem = this[i];
+            var currentItem = items[i];
+
+            if (currentItem is null)
+            {
+                currentItem = _valueFactory(i);
+                items[i] = currentItem;
+            }
+
             array[arrayIndex + i] = currentItem;
         }
     }
@@ -79,7 +76,14 @@ internal sealed class LazyList<[DynamicallyAccessedMembers(DynamicallyAccessedMe
 
         for (var i = 0; i < items.Length; i++)
         {
-            var currentItem = this[i];
+            var currentItem = items[i];
+
+            if (currentItem is null)
+            {
+                currentItem = _valueFactory(i);
+                items[i] = currentItem;
+            }
+
             if (EqualityComparer<T>.Default.Equals(currentItem, item))
             {
                 return i;
