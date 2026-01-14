@@ -138,7 +138,7 @@ public sealed unsafe class TranslationUnit : IDisposable, IEquatable<Translation
         {
             templateArgument = new TemplateArgument(handle);
             templateArgumentRef.SetTarget(templateArgument);
-}
+        }
         return templateArgument;
     }
 

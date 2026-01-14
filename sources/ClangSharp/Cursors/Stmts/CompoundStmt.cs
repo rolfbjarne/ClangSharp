@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXCursorKind;
 using static ClangSharp.Interop.CX_StmtClass;
+using static ClangSharp.Interop.CXCursorKind;
 
 namespace ClangSharp;
 

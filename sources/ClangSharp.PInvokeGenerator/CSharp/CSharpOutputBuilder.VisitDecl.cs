@@ -258,7 +258,7 @@ internal partial class CSharpOutputBuilder : IOutputBuilder
             AddNativeTypeNameAttribute(desc.NativeType);
         }
 
-        if (desc.Location is {} location)
+        if (desc.Location is { } location)
         {
             WriteSourceLocation(location, false);
         }
@@ -444,7 +444,7 @@ internal partial class CSharpOutputBuilder : IOutputBuilder
             WriteLine(")]");
         }
 
-        if (desc.Location is {} location)
+        if (desc.Location is { } location)
         {
             WriteSourceLocation(location, false);
         }
@@ -786,7 +786,7 @@ internal partial class CSharpOutputBuilder : IOutputBuilder
             AddNativeInheritanceAttribute(desc.NativeInheritance);
         }
 
-        if (desc.Location is {} location)
+        if (desc.Location is { } location)
         {
             WriteSourceLocation(location, false);
         }

@@ -271,10 +271,11 @@ __attribute__((objc_runtime_name("MyRenamedProtocol")))
 
         using var translationUnit = CreateTranslationUnit(inputContents, "objective-c++");
 
-        var categories = translationUnit.TranslationUnitDecl.Decls.OfType<ObjCCategoryDecl>().ToList ();
-        Assert.That (categories.Count, Is.EqualTo (1), "Count");
-        foreach (var c in categories) {
-            Assert.That(c.TypeParamList.Count, Is.EqualTo (0), "TypeParamList.Count");
+        var categories = translationUnit.TranslationUnitDecl.Decls.OfType<ObjCCategoryDecl>().ToList();
+        Assert.That(categories.Count, Is.EqualTo(1), "Count");
+        foreach (var c in categories)
+        {
+            Assert.That(c.TypeParamList.Count, Is.EqualTo(0), "TypeParamList.Count");
         }
     }
 

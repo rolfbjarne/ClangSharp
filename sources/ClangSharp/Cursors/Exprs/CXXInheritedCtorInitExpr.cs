@@ -2,9 +2,9 @@
 
 using System.Diagnostics;
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXCursorKind;
 using static ClangSharp.Interop.CX_ConstructionKind;
 using static ClangSharp.Interop.CX_StmtClass;
+using static ClangSharp.Interop.CXCursorKind;
 
 namespace ClangSharp;
 

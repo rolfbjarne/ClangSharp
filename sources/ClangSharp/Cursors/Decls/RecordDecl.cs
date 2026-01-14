@@ -16,7 +16,7 @@ public class RecordDecl : TagDecl
     private readonly LazyList<FieldDecl> _fields;
     private readonly ValueLazy<List<IndirectFieldDecl>> _indirectFields;
     private readonly ValueLazy<RecordDecl?> _injectedClassName;
-    
+
 
     internal RecordDecl(CXCursor handle) : this(handle, handle.Kind, CX_DeclKind_Record)
     {

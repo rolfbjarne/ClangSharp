@@ -2,8 +2,8 @@
 
 using System.Collections.Generic;
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXTypeKind;
 using static ClangSharp.Interop.CX_TypeClass;
+using static ClangSharp.Interop.CXTypeKind;
 
 namespace ClangSharp;
 

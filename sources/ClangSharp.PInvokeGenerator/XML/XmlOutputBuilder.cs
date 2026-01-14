@@ -24,8 +24,7 @@ internal partial class XmlOutputBuilder(string name, PInvokeGenerator generator)
         get
         {
             StringWriter sw = new();
-            using var writer = XmlWriter.Create(sw, new()
-            {
+            using var writer = XmlWriter.Create(sw, new() {
                 Indent = true,
                 IndentChars = "  ",
                 ConformanceLevel = ConformanceLevel.Fragment,

@@ -3,8 +3,8 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using static ClangSharp.Interop.CXTypeKind;
 using static ClangSharp.Interop.CX_TypeClass;
+using static ClangSharp.Interop.CXTypeKind;
 
 namespace ClangSharp.Interop;
 
@@ -45,7 +45,7 @@ public unsafe partial struct CXType : IEquatable<CXType>
 
     public readonly CXType Desugar => (kind != CXType_Invalid) ? clangsharp.Type_desugar(this) : default;
 
-    public readonly CXType ElementType => (kind != CXType_Invalid) ? clangsharp.Type_getElementType(this) :default;
+    public readonly CXType ElementType => (kind != CXType_Invalid) ? clangsharp.Type_getElementType(this) : default;
 
     public readonly CXType EquivalentType => (kind != CXType_Invalid) ? clangsharp.Type_getEquivalentType(this) : default;
 

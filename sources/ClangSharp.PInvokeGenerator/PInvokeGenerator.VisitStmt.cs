@@ -10,15 +10,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using ClangSharp.Abstractions;
 using ClangSharp.CSharp;
-using static ClangSharp.Interop.CXBinaryOperatorKind;
 using static ClangSharp.Interop.CX_CastKind;
 using static ClangSharp.Interop.CX_CharacterKind;
 using static ClangSharp.Interop.CX_StmtClass;
 using static ClangSharp.Interop.CX_StringKind;
 using static ClangSharp.Interop.CX_UnaryExprOrTypeTrait;
-using static ClangSharp.Interop.CXUnaryOperatorKind;
+using static ClangSharp.Interop.CXBinaryOperatorKind;
 using static ClangSharp.Interop.CXEvalResultKind;
 using static ClangSharp.Interop.CXTypeKind;
+using static ClangSharp.Interop.CXUnaryOperatorKind;
 
 namespace ClangSharp;
 

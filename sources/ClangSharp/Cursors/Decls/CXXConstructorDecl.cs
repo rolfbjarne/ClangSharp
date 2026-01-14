@@ -15,7 +15,7 @@ public sealed class CXXConstructorDecl : CXXMethodDecl
     internal CXXConstructorDecl(CXCursor handle) : base(handle, CXCursor_Constructor, CX_DeclKind_CXXConstructor)
     {
         _inheritedConstructor = new ValueLazy<CXXConstructorDecl>(() => TranslationUnit.GetOrCreate<CXXConstructorDecl>(Handle.InheritedConstructor));
-        _initExprs = LazyList.Create<Expr>(Handle.NumExprs , (i) => TranslationUnit.GetOrCreate<Expr>(Handle.GetExpr(unchecked((uint)i))));
+        _initExprs = LazyList.Create<Expr>(Handle.NumExprs, (i) => TranslationUnit.GetOrCreate<Expr>(Handle.GetExpr(unchecked((uint)i))));
     }
 
     public new CXXConstructorDecl CanonicalDecl => (CXXConstructorDecl)base.CanonicalDecl;

@@ -1,8 +1,8 @@
 // Copyright (c) .NET Foundation and Contributors. All Rights Reserved. Licensed under the MIT License (MIT). See License.md in the repository root for more information.
 
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXCursorKind;
 using static ClangSharp.Interop.CX_DeclKind;
+using static ClangSharp.Interop.CXCursorKind;
 
 namespace ClangSharp;
 
@@ -38,7 +38,7 @@ public sealed class ObjCPropertyDecl : NamedDecl
     public CXObjCPropertyAttrKind PropertyAttributes => Handle.GetObjCPropertyAttributes(0);
 
     /// <summary>This calls ObjCPropertyDecl->getPropertyAttributes()</summary>
-    public ObjCPropertyAttributeKind GetPropertyAttributes () => Handle.GetPropertyAttributes();
+    public ObjCPropertyAttributeKind GetPropertyAttributes() => Handle.GetPropertyAttributes();
 #pragma warning restore CA1721
 
     public ObjCIvarDecl PropertyIvarDecl => _propertyIvarDecl.Value;

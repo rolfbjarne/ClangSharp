@@ -223,8 +223,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withAttributes = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withAttributes = new Dictionary<string, IReadOnlyList<string>> {
             ["MyEnum1"] = ["Flags"]
         };
         return ValidateGeneratedCSharpCompatibleWindowsBindingsAsync(inputContents, expectedOutputContents, withAttributes: withAttributes);
@@ -259,8 +258,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["MyEnum1"] = ["static ClangSharp.Test.MyEnum1"]
         };
         return ValidateGeneratedCSharpCompatibleWindowsBindingsAsync(inputContents, expectedOutputContents, withUsings: withNamespaces);
@@ -295,8 +293,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["*"] = ["static ClangSharp.Test.MyEnum1"]
         };
         return ValidateGeneratedCSharpCompatibleWindowsBindingsAsync(inputContents, expectedOutputContents, withUsings: withNamespaces);
@@ -332,8 +329,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["*"] = ["static ClangSharp.Test.MyEnum1"],
             ["MyEnum2"] = ["System"]
         };
@@ -472,8 +468,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["MyEnum"] = "uint"
         };
         return ValidateGeneratedCSharpCompatibleWindowsBindingsAsync(inputContents, expectedOutputContents, withTypes: withTypes);
@@ -508,8 +503,7 @@ enum MyEnum2 : int
 }
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["*"] = "uint"
         };
         return ValidateGeneratedCSharpCompatibleWindowsBindingsAsync(inputContents, expectedOutputContents, withTypes: withTypes);
@@ -543,8 +537,7 @@ enum MyEnum2 : int
 }
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["*"] = "uint",
             ["MyEnum1"] = "int",
         };

@@ -30,7 +30,7 @@ public sealed unsafe class TemplateArgument : IDisposable
 
         _translationUnit = new ValueLazy<TranslationUnit>(() => TranslationUnit.GetOrCreate(Handle.tu));
 
-        _asDecl = new ValueLazy<ValueDecl>(() =>  TranslationUnit.GetOrCreate<ValueDecl>(Handle.AsDecl));
+        _asDecl = new ValueLazy<ValueDecl>(() => TranslationUnit.GetOrCreate<ValueDecl>(Handle.AsDecl));
         _asExpr = new ValueLazy<Expr>(() => TranslationUnit.GetOrCreate<Expr>(Handle.AsExpr));
         _asTemplate = new ValueLazy<TemplateName>(() => TranslationUnit.GetOrCreate(Handle.AsTemplate));
         _asTemplateOrTemplatePattern = new ValueLazy<TemplateName>(() => TranslationUnit.GetOrCreate(Handle.AsTemplateOrTemplatePattern));
@@ -74,7 +74,7 @@ public sealed unsafe class TemplateArgument : IDisposable
         get
         {
             switch (Kind)
-{
+            {
                 case CXTemplateArgumentKind_Null:
                 case CXTemplateArgumentKind_Declaration:
                 case CXTemplateArgumentKind_Integral:

@@ -188,8 +188,7 @@ struct MyStruct
 </bindings>
 ";
 
-        var withLibraryPaths = new Dictionary<string, string>
-        {
+        var withLibraryPaths = new Dictionary<string, string> {
             ["MyFunction"] = "ClangSharpPInvokeGenerator"
         };
         return ValidateGeneratedXmlPreviewUnixBindingsAsync(inputContents, expectedOutputContents, libraryPath: string.Empty, withLibraryPaths: withLibraryPaths);
@@ -211,8 +210,7 @@ struct MyStruct
 </bindings>
 ";
 
-        var withLibraryPaths = new Dictionary<string, string>
-        {
+        var withLibraryPaths = new Dictionary<string, string> {
             ["*"] = "ClangSharpPInvokeGenerator"
         };
         return ValidateGeneratedXmlPreviewUnixBindingsAsync(inputContents, expectedOutputContents, libraryPath: string.Empty, withLibraryPaths: withLibraryPaths);
@@ -324,8 +322,7 @@ struct MyStruct
 </bindings>
 ";
 
-        var withCallConvs = new Dictionary<string, string>
-        {
+        var withCallConvs = new Dictionary<string, string> {
             ["*"] = "Winapi"
         };
         return ValidateGeneratedXmlPreviewUnixBindingsAsync(inputContents, expectedOutputContents, withCallConvs: withCallConvs);
@@ -356,8 +353,7 @@ struct MyStruct
 </bindings>
 ";
 
-        var withCallConvs = new Dictionary<string, string>
-        {
+        var withCallConvs = new Dictionary<string, string> {
             ["*"] = "Winapi",
             ["MyFunction2"] = "StdCall"
         };

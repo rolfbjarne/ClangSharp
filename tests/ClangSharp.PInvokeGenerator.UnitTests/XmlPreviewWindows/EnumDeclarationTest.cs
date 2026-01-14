@@ -226,8 +226,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withAttributes = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withAttributes = new Dictionary<string, IReadOnlyList<string>> {
             ["MyEnum1"] = ["Flags"]
         };
         return ValidateGeneratedXmlPreviewWindowsBindingsAsync(inputContents, expectedOutputContents, withAttributes: withAttributes);
@@ -271,8 +270,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["MyEnum1"] = ["static ClangSharp.Test.MyEnum1"]
         };
         return ValidateGeneratedXmlPreviewWindowsBindingsAsync(inputContents, expectedOutputContents, withUsings: withNamespaces);
@@ -316,8 +314,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["*"] = ["static ClangSharp.Test.MyEnum1"]
         };
         return ValidateGeneratedXmlPreviewWindowsBindingsAsync(inputContents, expectedOutputContents, withUsings: withNamespaces);
@@ -361,8 +358,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withNamespaces = new Dictionary<string, IReadOnlyList<string>>
-        {
+        var withNamespaces = new Dictionary<string, IReadOnlyList<string>> {
             ["*"] = ["static ClangSharp.Test.MyEnum1"],
             ["MyEnum2"] = ["System"]
         };
@@ -567,8 +563,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["MyEnum"] = "uint"
         };
         return ValidateGeneratedXmlPreviewWindowsBindingsAsync(inputContents, expectedOutputContents, withTypes: withTypes);
@@ -606,8 +601,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["*"] = "uint"
         };
         return ValidateGeneratedXmlPreviewWindowsBindingsAsync(inputContents, expectedOutputContents, withTypes: withTypes);
@@ -645,8 +639,7 @@ enum MyEnum2 : int
 </bindings>
 ";
 
-        var withTypes = new Dictionary<string, string>
-        {
+        var withTypes = new Dictionary<string, string> {
             ["*"] = "uint",
             ["MyEnum1"] = "int",
         };

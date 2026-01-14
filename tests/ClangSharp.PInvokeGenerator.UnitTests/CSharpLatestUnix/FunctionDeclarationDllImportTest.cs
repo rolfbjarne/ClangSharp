@@ -179,8 +179,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withLibraryPaths = new Dictionary<string, string>
-        {
+        var withLibraryPaths = new Dictionary<string, string> {
             ["MyFunction"] = "ClangSharpPInvokeGenerator"
         };
         return ValidateGeneratedCSharpLatestUnixBindingsAsync(inputContents, expectedOutputContents, libraryPath: string.Empty, withLibraryPaths: withLibraryPaths);
@@ -202,8 +201,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withLibraryPaths = new Dictionary<string, string>
-        {
+        var withLibraryPaths = new Dictionary<string, string> {
             ["*"] = "ClangSharpPInvokeGenerator"
         };
         return ValidateGeneratedCSharpLatestUnixBindingsAsync(inputContents, expectedOutputContents, libraryPath: string.Empty, withLibraryPaths: withLibraryPaths);
@@ -291,8 +289,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withCallConvs = new Dictionary<string, string>
-        {
+        var withCallConvs = new Dictionary<string, string> {
             ["*"] = "Winapi"
         };
         return ValidateGeneratedCSharpLatestUnixBindingsAsync(inputContents, expectedOutputContents, withCallConvs: withCallConvs);
@@ -317,8 +314,7 @@ namespace ClangSharp.Test
 }
 ";
 
-        var withCallConvs = new Dictionary<string, string>
-        {
+        var withCallConvs = new Dictionary<string, string> {
             ["*"] = "Winapi",
             ["MyFunction2"] = "StdCall"
         };

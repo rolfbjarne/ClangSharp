@@ -3,9 +3,9 @@
 using System;
 using System.Diagnostics;
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXCursorKind;
-using static ClangSharp.Interop.CXBinaryOperatorKind;
 using static ClangSharp.Interop.CX_StmtClass;
+using static ClangSharp.Interop.CXBinaryOperatorKind;
+using static ClangSharp.Interop.CXCursorKind;
 
 namespace ClangSharp;
 
@@ -35,7 +35,7 @@ public class BinaryOperator : Expr
 
     public bool IsComparisonOp => Opcode is >= CXBinaryOperator_Cmp and <= CXBinaryOperator_NE;
 
-    public bool IsCompoundAssignmentOp=> Opcode is > CXBinaryOperator_Assign and <= CXBinaryOperator_OrAssign;
+    public bool IsCompoundAssignmentOp => Opcode is > CXBinaryOperator_Assign and <= CXBinaryOperator_OrAssign;
 
     public bool IsEqualityOp => Opcode is CXBinaryOperator_EQ or CXBinaryOperator_NE;
 
@@ -47,7 +47,7 @@ public class BinaryOperator : Expr
 
     public bool IsRelationalOp => Opcode is >= CXBinaryOperator_LT and <= CXBinaryOperator_GE;
 
-    public bool IsShiftAssignOp=> Opcode is CXBinaryOperator_ShlAssign or CXBinaryOperator_ShrAssign;
+    public bool IsShiftAssignOp => Opcode is CXBinaryOperator_ShlAssign or CXBinaryOperator_ShrAssign;
 
     public bool IsShiftOp => Opcode is CXBinaryOperator_Shl or CXBinaryOperator_Shr;
 

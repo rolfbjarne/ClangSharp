@@ -14,15 +14,13 @@ public class Expr : ValueStmt
 {
     private static readonly Func<Expr, Expr> s_ignoreImplicitCastsSingleStep = (e) => e is ImplicitCastExpr ice ? ice.SubExpr : e is FullExpr fe ? fe.SubExpr : e;
 
-    private static readonly Func<Expr, Expr> s_ignoreImplicitSingleStep = (e) =>
-    {
+    private static readonly Func<Expr, Expr> s_ignoreImplicitSingleStep = (e) => {
         var subE = s_ignoreImplicitCastsSingleStep(e);
 
         return subE != e ? subE : e is MaterializeTemporaryExpr mte ? mte.SubExpr : e is CXXBindTemporaryExpr bte ? bte.SubExpr : e;
     };
 
-    private static readonly Func<Expr, Expr> s_ignoreParensSingleStep = (e) =>
-    {
+    private static readonly Func<Expr, Expr> s_ignoreParensSingleStep = (e) => {
         if (e is ParenExpr pe)
         {
             return pe.SubExpr;

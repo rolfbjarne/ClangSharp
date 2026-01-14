@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ClangSharp.UnitTests;
 
-public abstract class CXXMethodDeclarationXmlTest: CXXMethodDeclarationTest
+public abstract class CXXMethodDeclarationXmlTest : CXXMethodDeclarationTest
 {
     protected override Task ConstructorTestImpl()
     {

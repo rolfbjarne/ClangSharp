@@ -15,9 +15,9 @@ using static ClangSharp.Interop.CX_StmtClass;
 using static ClangSharp.Interop.CX_StorageClass;
 using static ClangSharp.Interop.CX_StringKind;
 using static ClangSharp.Interop.CX_UnaryExprOrTypeTrait;
-using static ClangSharp.Interop.CXUnaryOperatorKind;
 using static ClangSharp.Interop.CXEvalResultKind;
 using static ClangSharp.Interop.CXTypeKind;
+using static ClangSharp.Interop.CXUnaryOperatorKind;
 
 namespace ClangSharp;
 
@@ -2773,7 +2773,7 @@ public partial class PInvokeGenerator
 
             // Signed types are sign extended when shifted
             var isUnsignedToSigned = !isTypeBackingSigned && isTypeSigned;
-            
+
             // Check if type is directly shiftable/maskable
             // Remapped types are not guaranteed to be shiftable or maskable
             // Enums are maskable, but not shiftable

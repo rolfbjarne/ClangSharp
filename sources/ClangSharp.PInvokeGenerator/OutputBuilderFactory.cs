@@ -25,9 +25,8 @@ internal sealed class OutputBuilderFactory(PInvokeGenerator generator)
             throw new ArgumentNullException(nameof(name));
         }
 
-        var outputBuilder = generator.Config.OutputMode switch
-        {
-            PInvokeGeneratorOutputMode.CSharp => (IOutputBuilder) new CSharpOutputBuilder(name, generator, writeSourceLocation: _writeSourceLocation),
+        var outputBuilder = generator.Config.OutputMode switch {
+            PInvokeGeneratorOutputMode.CSharp => (IOutputBuilder)new CSharpOutputBuilder(name, generator, writeSourceLocation: _writeSourceLocation),
             PInvokeGeneratorOutputMode.Xml => new XmlOutputBuilder(name, generator),
             _ => throw new InvalidOperationException()
         };

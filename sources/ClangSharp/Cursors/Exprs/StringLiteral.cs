@@ -3,9 +3,9 @@
 using System;
 using System.Runtime.InteropServices;
 using ClangSharp.Interop;
-using static ClangSharp.Interop.CXCursorKind;
 using static ClangSharp.Interop.CX_StmtClass;
 using static ClangSharp.Interop.CX_StringKind;
+using static ClangSharp.Interop.CXCursorKind;
 
 namespace ClangSharp;
 
